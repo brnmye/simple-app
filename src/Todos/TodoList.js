@@ -1,8 +1,6 @@
-import * as queries from "./graphql/queries";
-import * as subscriptions from "./graphql/subscriptions";
-import * as mutations from "./graphql/mutations";
+import * as queries from "../graphql/queries";
+import * as mutations from "../graphql/mutations";
 import React, { Component } from "react";
-import { Connect } from "aws-amplify-react";
 import { API, graphqlOperation } from "aws-amplify";
 import ListView from "./TodoView";
 import TodoForm from "./TodoForm";

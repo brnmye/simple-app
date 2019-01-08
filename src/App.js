@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
 import aws_exports from "./aws-exports";
 import NavBarPage from "./NavBar";
 import { withAuthenticator } from "aws-amplify-react";
-import logo from "./logo.svg";
 import "./App.css";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
+import TodoList from "./Todos/TodoList";
 
 Amplify.configure(aws_exports);
 

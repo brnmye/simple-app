@@ -1,4 +1,4 @@
-import * as mutations from "./graphql/mutations";
+import * as mutations from "../graphql/mutations";
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 
