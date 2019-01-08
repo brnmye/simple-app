@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import aws_exports from "./aws-exports";
+import NavBarPage from "./NavBar";
+import { withAuthenticator } from "aws-amplify-react";
+import logo from "./logo.svg";
+import "./App.css";
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
+
+Amplify.configure(aws_exports);
 
 class App extends Component {
   render() {
+    let styles = {
+      border: "10px solid black "
+    };
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div style={styles}>
+          <NavBarPage />
+        </div>
+        <TodoList />
       </div>
     );
   }
 }
 
-export default App;
+export default withAuthenticator(App, true);
