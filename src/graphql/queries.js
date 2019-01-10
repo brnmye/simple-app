@@ -24,3 +24,69 @@ export const listTodos = `query ListTodos(
   }
 }
 `;
+export const getPerson = `query GetPerson($id: ID!) {
+  getPerson(id: $id) {
+    name
+    age
+    posts {
+      title
+      content
+      author {
+        name
+        age
+      }
+    }
+  }
+}
+`;
+export const listPersons = `query ListPersons(
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPersons(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      age
+      posts {
+        title
+        content
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getPost = `query GetPost($id: ID!) {
+  getPost(id: $id) {
+    title
+    content
+    author {
+      name
+      age
+      posts {
+        title
+        content
+      }
+    }
+  }
+}
+`;
+export const listPosts = `query ListPosts(
+  $filter: ModelPostFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      title
+      content
+      author {
+        name
+        age
+      }
+    }
+    nextToken
+  }
+}
+`;

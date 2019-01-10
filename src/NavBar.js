@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
+import TodoList from "./Todos/TodoList";
 class NavBar extends Component {
   state = {};
   render() {
@@ -23,14 +24,24 @@ class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link something" href="#">
+              <Link to="/" className="nav-link ">
                 Home <span className="sr-only">(current)</span>
-              </a>
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="TodoList" className="nav-link">
+                Todo list <span className="sr-only">(current)</span>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="https://github.com/kirbycampbell">
                 GitHub
               </a>
+            </li>
+            <li className="nav-item active">
+              <Link to="Audio" className="nav-link">
+                Audio <span className="sr-only">(current)</span>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -59,6 +70,7 @@ class NavBar extends Component {
                 </a>
               </div>
             </li>
+
             <li className="nav-item" />
           </ul>
           <form className="form-inline my-2 my-lg-0">

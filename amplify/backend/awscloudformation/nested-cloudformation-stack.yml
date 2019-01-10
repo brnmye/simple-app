@@ -85,6 +85,56 @@
 				"Parameters": {}
 			}
 		},
+		"authcognito4261f08a": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/simpleapp-20190102163858-deployment/amplify-cfn-templates/auth/cognito4261f08a-cloudformation-template.yml",
+				"Parameters": {
+					"identityPoolName": "cognito4261f08a_identitypool_4261f08a",
+					"allowUnauthenticatedIdentities": false,
+					"thirdPartyAuth": false,
+					"lambdaLogPolicy": "cognito4261f08a_lambda_log_policy",
+					"openIdLambdaRoleName": "cognito4261f08a_openid_lambda_role",
+					"openIdRolePolicy": "cognito4261f08a_openid_pass_role_policy",
+					"openIdLambdaIAMPolicy": "cognito4261f08a_openid_lambda_iam_policy",
+					"openIdLogPolicy": "cognito4261f08a_openid_lambda_log_policy",
+					"userPoolName": "cognito4261f08a_userpool_4261f08a",
+					"autoVerifiedAttributes": "email",
+					"mfaConfiguration": "OFF",
+					"mfaTypes": "SMS Text Message",
+					"roleName": "cognito4261f08a_sns-role",
+					"roleExternalId": "cognito4261f08a_role_external_id",
+					"policyName": "cognito4261f08a-sns-policy",
+					"smsAuthenticationMessage": "Your authentication code is {####}",
+					"smsVerificationMessage": "Your verification code is {####}",
+					"emailVerificationSubject": "Your verification code",
+					"emailVerificationMessage": "Your verification code is {####}",
+					"defaultPasswordPolicy": false,
+					"passwordPolicyMinLength": 8,
+					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
+					"requiredAttributes": "email",
+					"userpoolClientName": "cognito4261f08a_app_client",
+					"userpoolClientGenerateSecret": true,
+					"userpoolClientRefreshTokenValidity": 30,
+					"userpoolClientReadAttributes": "email",
+					"mfaLambdaRole": "cognito4261f08a_totp_lambda_role",
+					"mfaLambdaLogPolicy": "cognito4261f08a_totp_lambda_log_policy",
+					"mfaPassRolePolicy": "cognito4261f08a_totp_pass_role_policy",
+					"mfaLambdaIAMPolicy": "cognito4261f08a_totp_lambda_iam_policy",
+					"userpoolClientLambdaRole": "cognito4261f08a_userpoolclient_lambda_role",
+					"userpoolClientLogPolicy": "cognito4261f08a_userpoolclient_lambda_log_policy",
+					"userpoolClientLambdaPolicy": "cognito4261f08a_userpoolclient_lambda_iam_policy",
+					"userpoolClientSetAttributes": false,
+					"useDefault": "default",
+					"unAuthRoleName": "simpleapp-20190102163858-unauthRole",
+					"authRoleName": "simpleapp-20190102163858-authRole",
+					"unAuthRoleArn": "arn:aws:iam::706688031207:role/simpleapp-20190102163858-unauthRole",
+					"authRoleArn": "arn:aws:iam::706688031207:role/simpleapp-20190102163858-authRole",
+					"resourceName": "cognito4261f08a",
+					"authSelections": "identityPoolAndUserPool"
+				}
+			}
+		},
 		"apisimpleapp": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
@@ -93,14 +143,14 @@
 					"AppSyncApiName": "simpleapp",
 					"AuthCognitoUserPoolId": {
 						"Fn::GetAtt": [
-							"authcognito6888edb8",
+							"authcognito4261f08a",
 							"Outputs.UserPoolId"
 						]
 					},
-					"schemaGraphql": "s3://simpleapp-20190102163858-deployment/amplify-appsync-files/schema.graphql.1546536016619",
+					"schemaGraphql": "s3://simpleapp-20190102163858-deployment/amplify-appsync-files/schema.graphql.1547065770280",
 					"ResolverBucket": "simpleapp-20190102163858-deployment",
 					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1546536016619"
+					"DeploymentTimestamp": "1547065770280"
 				}
 			}
 		}

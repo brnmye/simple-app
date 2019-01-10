@@ -10,7 +10,8 @@ class TodoList extends Component {
     super(props);
     this.state = {
       items: [],
-      test: "nothing"
+      test: "nothing",
+      formOn: false
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleQuery = this.handleQuery.bind(this);
@@ -35,11 +36,28 @@ class TodoList extends Component {
     console.log(this.state);
   };
 
+  handleForm = () => {
+    this.setState({ formOn: !this.state.formOn });
+  };
+
   render() {
     const { items } = this.state;
+    const CreateForm = props => {
+      const formOn = props.formOn;
+      if (formOn) {
+        return (
+          <div>
+            <TodoForm onCreate={this.handleQuery} />
+            <button onClick={this.handleForm}>Cancel</button>
+          </div>
+        );
+      } else {
+        return <button onClick={this.handleForm}>Create Todo</button>;
+      }
+    };
     return (
       <div className="App">
-        <TodoForm onCreate={this.handleQuery} />
+        <CreateForm formOn={this.state.formOn} />
         <ListView items={items} onDelete={this.handleDelete} />
       </div>
     );

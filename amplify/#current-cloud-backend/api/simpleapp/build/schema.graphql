@@ -4,6 +4,18 @@ type Todo {
   description: String
 }
 
+type Person {
+  name: String!
+  age: Int!
+  posts: [Post!]!
+}
+
+type Post {
+  title: String!
+  content: String!
+  author: Person!
+}
+
 enum ModelSortDirection {
   ASC
   DESC
@@ -81,6 +93,10 @@ input ModelTodoFilterInput {
 type Query {
   getTodo(id: ID!): Todo
   listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  getPerson(id: ID!): Person
+  listPersons(filter: ModelPersonFilterInput, limit: Int, nextToken: String): ModelPersonConnection
+  getPost(id: ID!): Post
+  listPosts(filter: ModelPostFilterInput, limit: Int, nextToken: String): ModelPostConnection
 }
 
 input CreateTodoInput {
@@ -103,10 +119,76 @@ type Mutation {
   createTodo(input: CreateTodoInput!): Todo
   updateTodo(input: UpdateTodoInput!): Todo
   deleteTodo(input: DeleteTodoInput!): Todo
+  createPerson(input: CreatePersonInput!): Person
+  updatePerson(input: UpdatePersonInput!): Person
+  deletePerson(input: DeletePersonInput!): Person
+  createPost(input: CreatePostInput!): Post
+  updatePost(input: UpdatePostInput!): Post
+  deletePost(input: DeletePostInput!): Post
 }
 
 type Subscription {
   onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
   onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
   onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreatePerson: Person @aws_subscribe(mutations: ["createPerson"])
+  onUpdatePerson: Person @aws_subscribe(mutations: ["updatePerson"])
+  onDeletePerson: Person @aws_subscribe(mutations: ["deletePerson"])
+  onCreatePost: Post @aws_subscribe(mutations: ["createPost"])
+  onUpdatePost: Post @aws_subscribe(mutations: ["updatePost"])
+  onDeletePost: Post @aws_subscribe(mutations: ["deletePost"])
+}
+
+type ModelPersonConnection {
+  items: [Person]
+  nextToken: String
+}
+
+input ModelPersonFilterInput {
+  name: ModelStringFilterInput
+  age: ModelIntFilterInput
+  and: [ModelPersonFilterInput]
+  or: [ModelPersonFilterInput]
+  not: ModelPersonFilterInput
+}
+
+input CreatePersonInput {
+  name: String!
+  age: Int!
+}
+
+input UpdatePersonInput {
+  name: String
+  age: Int
+}
+
+input DeletePersonInput {
+  id: ID
+}
+
+type ModelPostConnection {
+  items: [Post]
+  nextToken: String
+}
+
+input ModelPostFilterInput {
+  title: ModelStringFilterInput
+  content: ModelStringFilterInput
+  and: [ModelPostFilterInput]
+  or: [ModelPostFilterInput]
+  not: ModelPostFilterInput
+}
+
+input CreatePostInput {
+  title: String!
+  content: String!
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+}
+
+input DeletePostInput {
+  id: ID
 }

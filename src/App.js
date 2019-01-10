@@ -5,6 +5,9 @@ import { withAuthenticator } from "aws-amplify-react";
 import "./App.css";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import TodoList from "./Todos/TodoList";
+import { Route } from "react-router-dom";
+import Home from "./Home";
+import Audio from "./Audio";
 
 Amplify.configure(aws_exports);
 
@@ -17,8 +20,10 @@ class App extends Component {
       <div className="App">
         <div style={styles}>
           <NavBarPage />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/TodoList" component={TodoList} />
+          <Route exact path="/Audio" component={Audio} />
         </div>
-        <TodoList />
       </div>
     );
   }

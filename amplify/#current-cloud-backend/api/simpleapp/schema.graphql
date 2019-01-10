@@ -3,3 +3,15 @@ type Todo @model {
   name: String!
   description: String
 }
+
+type Person @model {
+  name: String!
+  age: Int!
+  posts: [Post!]!
+}
+
+type Post @model {
+  title: String!
+  content: String!
+  author: Person!
+}

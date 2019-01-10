@@ -11,7 +11,7 @@ const ListView = props => {
             Name: {todo.name}
             <br /> Description: {todo.description} <br />
             <button id={todo.id} onClick={() => onDelete(todo)}>
-              Delete
+              Done
             </button>
           </p>
         ))}
