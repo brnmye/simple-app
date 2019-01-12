@@ -29,7 +29,7 @@ class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item active">
-              <Link to="TodoList" className="nav-link">
+              <Link to="/TodoList" className="nav-link">
                 Todo list <span className="sr-only">(current)</span>
               </Link>
             </li>
@@ -39,8 +39,13 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item active">
-              <Link to="Audio" className="nav-link">
+              <Link to="/Audio" className="nav-link">
                 Audio <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/Person" className="nav-link">
+                Person <span className="sr-only">(current)</span>
               </Link>
             </li>
             <li className="nav-item dropdown">

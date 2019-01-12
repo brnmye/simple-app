@@ -5,13 +5,15 @@ type Todo @model {
 }
 
 type Person @model {
+  id: ID!
   name: String!
   age: Int!
-  posts: [Post!]!
+  posts: [Post] @connection
 }
 
 type Post @model {
+  id: ID!
   title: String!
   content: String!
-  author: Person!
+  created_at: String!
 }

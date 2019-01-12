@@ -5,15 +5,17 @@ type Todo {
 }
 
 type Person {
+  id: ID!
   name: String!
   age: Int!
-  posts: [Post!]!
+  posts(filter: ModelPostFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostConnection
 }
 
 type Post {
+  id: ID!
   title: String!
   content: String!
-  author: Person!
+  created_at: String!
 }
 
 enum ModelSortDirection {
@@ -145,6 +147,7 @@ type ModelPersonConnection {
 }
 
 input ModelPersonFilterInput {
+  id: ModelIDFilterInput
   name: ModelStringFilterInput
   age: ModelIntFilterInput
   and: [ModelPersonFilterInput]
@@ -153,11 +156,13 @@ input ModelPersonFilterInput {
 }
 
 input CreatePersonInput {
+  id: ID
   name: String!
   age: Int!
 }
 
 input UpdatePersonInput {
+  id: ID!
   name: String
   age: Int
 }
@@ -172,21 +177,29 @@ type ModelPostConnection {
 }
 
 input ModelPostFilterInput {
+  id: ModelIDFilterInput
   title: ModelStringFilterInput
   content: ModelStringFilterInput
+  created_at: ModelStringFilterInput
   and: [ModelPostFilterInput]
   or: [ModelPostFilterInput]
   not: ModelPostFilterInput
 }
 
 input CreatePostInput {
+  id: ID
   title: String!
   content: String!
+  created_at: String!
+  personPostsId: ID
 }
 
 input UpdatePostInput {
+  id: ID!
   title: String
   content: String
+  created_at: String
+  personPostsId: ID
 }
 
 input DeletePostInput {

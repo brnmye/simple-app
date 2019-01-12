@@ -27,91 +27,79 @@ export const deleteTodo = `mutation DeleteTodo($input: DeleteTodoInput!) {
 `;
 export const createPerson = `mutation CreatePerson($input: CreatePersonInput!) {
   createPerson(input: $input) {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const updatePerson = `mutation UpdatePerson($input: UpdatePersonInput!) {
   updatePerson(input: $input) {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const deletePerson = `mutation DeletePerson($input: DeletePersonInput!) {
   deletePerson(input: $input) {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const createPost = `mutation CreatePost($input: CreatePostInput!) {
   createPost(input: $input) {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;
 export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
   updatePost(input: $input) {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;
 export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
   deletePost(input: $input) {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;

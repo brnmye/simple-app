@@ -147,10 +147,10 @@
 							"Outputs.UserPoolId"
 						]
 					},
-					"schemaGraphql": "s3://simpleapp-20190102163858-deployment/amplify-appsync-files/schema.graphql.1547065770280",
+					"schemaGraphql": "s3://simpleapp-20190102163858-deployment/amplify-appsync-files/schema.graphql.1547228804521",
 					"ResolverBucket": "simpleapp-20190102163858-deployment",
 					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1547065770280"
+					"DeploymentTimestamp": "1547228804521"
 				}
 			}
 		}

@@ -27,91 +27,79 @@ export const onDeleteTodo = `subscription OnDeleteTodo {
 `;
 export const onCreatePerson = `subscription OnCreatePerson {
   onCreatePerson {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const onUpdatePerson = `subscription OnUpdatePerson {
   onUpdatePerson {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const onDeletePerson = `subscription OnDeletePerson {
   onDeletePerson {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
 `;
 export const onCreatePost = `subscription OnCreatePost {
   onCreatePost {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;
 export const onUpdatePost = `subscription OnUpdatePost {
   onUpdatePost {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;
 export const onDeletePost = `subscription OnDeletePost {
   onDeletePost {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;

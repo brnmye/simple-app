@@ -26,15 +26,17 @@ export const listTodos = `query ListTodos(
 `;
 export const getPerson = `query GetPerson($id: ID!) {
   getPerson(id: $id) {
+    id
     name
     age
     posts {
-      title
-      content
-      author {
-        name
-        age
+      items {
+        id
+        title
+        content
+        created_at
       }
+      nextToken
     }
   }
 }
@@ -46,11 +48,11 @@ export const listPersons = `query ListPersons(
 ) {
   listPersons(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       name
       age
       posts {
-        title
-        content
+        nextToken
       }
     }
     nextToken
@@ -59,16 +61,10 @@ export const listPersons = `query ListPersons(
 `;
 export const getPost = `query GetPost($id: ID!) {
   getPost(id: $id) {
+    id
     title
     content
-    author {
-      name
-      age
-      posts {
-        title
-        content
-      }
-    }
+    created_at
   }
 }
 `;
@@ -79,12 +75,10 @@ export const listPosts = `query ListPosts(
 ) {
   listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       title
       content
-      author {
-        name
-        age
-      }
+      created_at
     }
     nextToken
   }
