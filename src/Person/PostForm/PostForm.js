@@ -19,16 +19,21 @@ class PostForm extends Component {
     this.handleQuery = this.handleQuery.bind(this);
   }
 
-  handleQuery = async event => {
+  handleQuery = async () => {
     const { thisUser } = this.props;
-    const thisUserPosts = await API.graphql(
-      graphqlOperation(queries.getPerson, { id: thisUser.id })
-    );
-    this.setState({ posts: thisUserPosts.data.getPerson.posts.items }, () => {
-      this.setState({ loading: false });
-    });
-    //console.log(this.state.posts);
+    try {
+      await API.graphql(
+        graphqlOperation(queries.getPerson, { id: thisUser.id })
+      ).then(result => this.setPosts(result.data));
+    } catch (e) {
+      console.log("Caught it...");
+    }
   };
+
+  setPosts(results) {
+    this.setState({ posts: results.getPerson.posts.items });
+    this.setState({ loading: false });
+  }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -38,14 +43,12 @@ class PostForm extends Component {
   handleSubmit = async event => {
     const { thisUser } = this.props;
     event.preventDefault();
-
     const postDetails = {
       title: this.state.title,
       content: this.state.content,
       created_at: moment().format("MMMM Do YYYY, h:mm:ss a"),
       personPostsId: thisUser.id
     };
-
     const newPost = await API.graphql(
       graphqlOperation(mutations.createPost, { input: postDetails })
     );
@@ -54,14 +57,15 @@ class PostForm extends Component {
     this.handleQuery();
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.handleQuery();
   }
 
-  // I LEFT OFF WITH FIRST LOAD OF PERSON DOESN't SHOW POSTS....
-
   // **************** Render Area ************************
   render() {
+    if (this.state.loading) {
+      this.handleQuery();
+    }
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -86,11 +90,8 @@ class PostForm extends Component {
           <input type="submit" value="Submit" />
         </form>
         <button onClick={this.handleQuery}>Press for Query</button>
-        {this.state.loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          <PostList posts={this.state.posts} />
-        )}
+
+        <PostList posts={this.state.posts} />
       </div>
     );
   }
