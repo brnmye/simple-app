@@ -91,7 +91,7 @@ class PostForm extends Component {
         </form>
         <button onClick={this.handleQuery}>Press for Query</button>
 
-        <PostList posts={this.state.posts} />
+        <PostList posts={this.state.posts} loading={this.state.loading} />
       </div>
     );
   }
