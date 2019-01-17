@@ -40,7 +40,7 @@ class PersonForm extends Component {
       age: this.state.age
     };
 
-    const newPerson = await API.graphql(
+    await API.graphql(
       graphqlOperation(mutations.createPerson, { input: personDetails })
     );
     this.handleQuery();

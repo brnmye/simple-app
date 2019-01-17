@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const PostList = props => {
   const { posts, loading } = props;
@@ -24,7 +23,7 @@ const PostList = props => {
             <div key={post.id} className="my-auto border">
               {post.title}: {post.content}
               <br />
-              {post.created_at}
+              Created at: {post.created_at}
             </div>
           ))}
         </div>
@@ -34,6 +33,3 @@ const PostList = props => {
 };
 
 export default PostList;
-
-//<Link to={`Person/` + person.id}>{person.name}</Link>
-//<button onClick={() => onDelete(post)}>Delete</button>

@@ -24,7 +24,7 @@ class TodoForm extends Component {
       description: this.state.description
     };
 
-    const newTodo = await API.graphql(
+    await API.graphql(
       graphqlOperation(mutations.createTodo, { input: todoDetails })
     );
     const { onCreate } = this.props;

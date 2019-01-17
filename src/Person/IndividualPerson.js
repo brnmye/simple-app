@@ -29,8 +29,8 @@ class IndividualPerson extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.person.name}</h1>
-        <h2>{this.state.person.age}</h2>
+        <h1>{this.state.person.name}'s Posts</h1>
+
         <PostForm thisUser={this.state.person} />
       </div>
     );

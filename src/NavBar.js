@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import TodoList from "./Todos/TodoList";
+
 class NavBar extends Component {
   state = {};
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
-          AllTube
-        </a>
+        <button className="navbar-brand btn btn-link">AllTube</button>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler btn btn-link"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -49,30 +47,29 @@ class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
+              <button
+                className="nav-link dropdown-toggle btn btn-link"
                 href="#"
                 id="navbarDropdownMenuLink"
-                role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
                 Experience
-              </a>
+              </button>
               <div
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a className="dropdown-item" href="#">
+                <button className="dropdown-item" href="#">
                   Coding Projects
-                </a>
-                <a className="dropdown-item" href="#">
+                </button>
+                <button className="dropdown-item" href="#">
                   Project Management
-                </a>
-                <a className="dropdown-item" href="#">
+                </button>
+                <button className="dropdown-item" href="#">
                   Photography
-                </a>
+                </button>
               </div>
             </li>
 

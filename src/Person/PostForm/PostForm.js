@@ -4,6 +4,7 @@ import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import * as moment from "moment";
 import PostList from "./PostView";
+import "./Post.css";
 
 class PostForm extends Component {
   constructor(props) {
@@ -12,11 +13,13 @@ class PostForm extends Component {
       title: "",
       content: "",
       posts: [],
-      loading: true
+      loading: true,
+      toggle: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleQuery = this.handleQuery.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handleQuery = async () => {
@@ -28,6 +31,9 @@ class PostForm extends Component {
     } catch (e) {
       console.log("Caught it...");
     }
+  };
+  handleToggle = () => {
+    this.setState({ toggle: !this.state.toggle });
   };
 
   setPosts(results) {
@@ -49,12 +55,13 @@ class PostForm extends Component {
       created_at: moment().format("MMMM Do YYYY, h:mm:ss a"),
       personPostsId: thisUser.id
     };
-    const newPost = await API.graphql(
+    await API.graphql(
       graphqlOperation(mutations.createPost, { input: postDetails })
     );
 
     this.setState({ title: "", content: "" });
     this.handleQuery();
+    this.handleToggle();
   };
 
   componentWillMount() {
@@ -66,32 +73,50 @@ class PostForm extends Component {
     if (this.state.loading) {
       this.handleQuery();
     }
+    if (!this.state.toggle) {
+      return (
+        <div>
+          <button onClick={this.handleToggle}>Create Post</button>{" "}
+          <PostList
+            className="create-post"
+            posts={this.state.posts}
+            loading={this.state.loading}
+          />
+        </div>
+      );
+    }
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             Title:
+            <br />
             <input
               name="title"
+              className="title-box"
               type="text"
               value={this.state.title}
               onChange={this.handleChange}
             />
           </label>
+          <br />
           <label>
             Content:
-            <input
+            <br />
+            <textarea
+              rows="4"
+              cols="70"
               name="content"
+              className="content-box"
               type="text"
               value={this.state.content}
               onChange={this.handleChange}
             />
           </label>
+          <br />
           <input type="submit" value="Submit" />
+          <button onClick={this.handleToggle}>Cancel</button>
         </form>
-        <button onClick={this.handleQuery}>Press for Query</button>
-
-        <PostList posts={this.state.posts} loading={this.state.loading} />
       </div>
     );
   }
