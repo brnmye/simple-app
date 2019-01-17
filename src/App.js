@@ -10,23 +10,23 @@ import Home from "./Home";
 import Audio from "./Audio";
 import PersonForm from "./Person/PersonForm";
 import IndividualPerson from "./Person/IndividualPerson";
+import BoxTest from "./BoxTest";
 
 Amplify.configure(aws_exports);
 
 class App extends Component {
   render() {
-    let styles = {
-      border: "10px solid black "
-    };
     return (
       <div className="App">
-        <div style={styles}>
+        <div>
           <NavBarPage />
+
           <Route exact path="/" component={Home} />
           <Route exact path="/TodoList" component={TodoList} />
           <Route exact path="/Audio" component={Audio} />
           <Route exact path="/Person" component={PersonForm} />
           <Route exact path={"/Person/:id"} component={IndividualPerson} />
+          <Route exact path={"/BoxTest"} component={BoxTest} />
         </div>
       </div>
     );

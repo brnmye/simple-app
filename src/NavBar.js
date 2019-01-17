@@ -61,15 +61,13 @@ class NavBar extends Component {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <button className="dropdown-item" href="#">
-                  Coding Projects
+                <button className="dropdown-item">Coding Projects</button>
+                <button className="dropdown-item btn btn-link">
+                  <Link to="/BoxTest" className="nav-link ">
+                    BoxTest <span className="sr-only">(current)</span>
+                  </Link>
                 </button>
-                <button className="dropdown-item" href="#">
-                  Project Management
-                </button>
-                <button className="dropdown-item" href="#">
-                  Photography
-                </button>
+                <button className="dropdown-item">Photography</button>
               </div>
             </li>
 
