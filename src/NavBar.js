@@ -63,7 +63,7 @@ class NavBar extends Component {
               >
                 <button className="dropdown-item">Coding Projects</button>
                 <button className="dropdown-item btn btn-link">
-                  <Link to="/BoxTest" className="nav-link ">
+                  <Link to="/BoxTest">
                     BoxTest <span className="sr-only">(current)</span>
                   </Link>
                 </button>

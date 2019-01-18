@@ -1,0 +1,10 @@
+.x-btn {
+  margin-top: 1px;
+  margin-right: 2px;
+  position: absolute;
+  width: 2.8em;
+  top: 0;
+  right: 0;
+  color: rgb(119, 21, 4);
+  background-color: whitesmoke;
+}

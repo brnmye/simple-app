@@ -58,7 +58,9 @@ class TodoList extends Component {
     return (
       <div className="App">
         <CreateForm formOn={this.state.formOn} />
-        <ListView items={items} onDelete={this.handleDelete} />
+        <div className="border w-50 mx-auto">
+          <ListView items={items} onDelete={this.handleDelete} />
+        </div>
       </div>
     );
   }
