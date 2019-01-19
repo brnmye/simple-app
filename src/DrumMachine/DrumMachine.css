@@ -1,0 +1,19 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.grid-item {
+  height: 20vw;
+  width: 20vw;
+  align-content: center;
+  padding: 1em;
+  border: 2em black;
+}
+.button1 {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(12, 19, 11);
+}
