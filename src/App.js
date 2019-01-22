@@ -13,7 +13,7 @@ import IndividualPerson from "./Person/IndividualPerson";
 import BoxTest from "./BoxTest";
 import BackgroundHeader from "./backgroundHeader";
 import Footer from "./Footer";
-import DrumMachine from "./DrumMachine/DrumMachine";
+import DrumMachine2 from "./DrumMachine/DrumMachine2";
 
 Amplify.configure(aws_exports);
 
@@ -33,7 +33,7 @@ class App extends Component {
           <Route exact path="/Person" component={PersonForm} />
           <Route exact path={"/Person/:id"} component={IndividualPerson} />
           <Route exact path={"/BoxTest"} component={BoxTest} />
-          <Route exact path={"/DrumMachine"} component={DrumMachine} />
+          <Route exact path={"/DrumMachine2"} component={DrumMachine2} />
           <div>
             <Footer />
           </div>
