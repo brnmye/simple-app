@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+//import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import AppResume from "./AppResume";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AppResume />
   </BrowserRouter>,
   document.getElementById("root")
 );
